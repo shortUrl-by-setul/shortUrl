@@ -1,0 +1,217 @@
+/* BUTTONS */
+/* LINK BUTTON */
+.link {
+    font-family: 'Kaushan Script', cursive;
+    color: var(--text-color);
+    transition: color var(--quick-transition-duration) var(--primary-curve);
+    font-size: medium;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.link:hover,
+.link:active {
+    color: var(--logo-color);
+}
+
+/* DEFAULT BUTTON */
+.default-button {
+    border-radius: 1em;
+    padding: 0.35em 1em 0.4em 1em;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: medium;
+    transition:
+        background-color var(--quick-transition-duration) var(--primary-curve),
+        border-color var(--quick-transition-duration) var(--primary-curve),
+        color var(--quick-transition-duration) var(--primary-curve);
+
+    color: var(--text-color-disabled);
+    background-color: var(--primary-color);
+    border: 1px solid var(--tertiary-color);
+}
+
+.default-button:hover {
+    background-color: rgb(from var(--secondary-color) r g b / 50%);
+    color: var(--text-color);
+}
+
+.default-button:active {
+    background-color: rgb(from var(--secondary-color) r g b / 100%);
+    color: var(--text-color);
+}
+
+.default-button:disabled {
+    color: rgb(from var(--text-color-disabled) r g b / 30%);
+    background-color: rgb(from var(--primary-color) r g b / 50%);
+    border: 1px solid rgb(from var(--tertiary-color) r g b / 50%);
+    cursor: not-allowed;
+}
+
+.default-button:disabled:hover {
+    color: rgb(from var(--text-color-disabled) r g b / 30%);
+    background-color: rgb(from var(--primary-color) r g b / 50%);
+    border: 1px solid rgb(from var(--tertiary-color) r g b / 50%);
+}
+
+
+
+/* RED BUTTON */
+.red-button {
+    background-color: transparent;
+    color: #CD7979;
+    border-color: transparent;
+}
+
+.red-button:hover {
+    background-color: transparent;
+    color: #ffa2a2;
+    border-color: transparent;
+}
+
+.red-button:active {
+    background-color: transparent;
+    color: #ffb7b7;
+    border-color: transparent;
+}
+
+.red-button:disabled {
+    color: rgb(from #CD7979 r g b / 50%);
+    background-color: transparent;
+    border-color: transparent;
+    cursor: not-allowed;
+}
+
+.red-button:disabled:hover {
+    color: rgb(from #CD7979 r g b / 50%);
+    background-color: transparent;
+    border-color: transparent;
+}
+
+[data-theme="light"] .red-button {
+    background-color: transparent;
+    color: #f36565;
+    border-color: transparent;
+}
+
+[data-theme="light"] .red-button:hover {
+    background-color: transparent;
+    color: #e64f4f;
+    border-color: transparent;
+}
+
+[data-theme="light"] .red-button:active {
+    background-color: transparent;
+    border-color: transparent;
+    color: #cf3131;
+
+}
+
+[data-theme="light"] .red-button:disabled {
+    color: rgb(from #F17676 r g b / 30%);
+    background-color: transparent;
+    border-color: transparent;
+    cursor: not-allowed;
+}
+
+[data-theme="light"] .red-button:disabled:hover {
+    color: rgb(from #F17676 r g b / 30%);
+    background-color: transparent;
+    border-color: transparent;
+}
+
+
+/* PRIMARY BUTTON */
+.primary-button {
+    background-color: rgb(from var(--accent-color) r g b / 25%);
+    /* background-color: #434F53; */
+    color: #96B3BD;
+    border-color: #72919B;
+}
+
+.primary-button:hover {
+    background-color: rgb(from var(--accent-color) r g b / 37.5%);
+    border-color: #d3f4ff6c;
+    color: #ebfaff;
+
+    /* background-color: #566164; */
+    /* color: #96B3BD; */
+    /* border-color: #809CA5; */
+}
+
+.primary-button:active {
+    background-color: rgb(from var(--accent-color) r g b / 50%);
+    border-color: rgb(from var(--accent-color) r g b / 50%);
+
+    /* background-color: #697275; */
+    color: #ebfaff;
+    /* border-color: #8EA7AF; */
+}
+
+.primary-button:disabled {
+    color: rgb(from #96B3BD r g b / 30%);
+    background-color: rgb(from var(--accent-color) r g b / 15%);
+    border: 1px solid rgb(from #72919B r g b / 30%);
+    cursor: not-allowed;
+}
+
+.primary-button:disabled:hover {
+    color: rgb(from #96B3BD r g b / 30%);
+    background-color: rgb(from var(--accent-color) r g b / 15%);
+    border: 1px solid rgb(from #72919B r g b / 30%);
+}
+
+[data-theme="light"] .primary-button {
+    background-color: rgb(from var(--accent-color) r g b / 25%);
+    color: #72adbe;
+    border-color: #A7CBD6;
+}
+
+[data-theme="light"] .primary-button:hover {
+    background-color: rgb(from var(--accent-color) r g b / 37.5%);
+    color: #578491;
+    border-color: #A7CBD6;
+}
+
+[data-theme="light"] .primary-button:active {
+    background-color: rgb(from var(--accent-color) r g b / 50%);
+    color: #578491;
+    border-color: #A7CBD6;
+}
+
+[data-theme="light"] .primary-button:disabled {
+    color: rgb(from #72adbe r g b / 30%);
+    background-color: rgb(from var(--accent-color) r g b / 15%);
+    border: 1px solid rgb(from #A7CBD6 r g b / 30%);
+    cursor: not-allowed;
+}
+
+[data-theme="light"] .primary-button:disabled:hover {
+    color: rgb(from #72adbe r g b / 30%);
+    background-color: rgb(from var(--accent-color) r g b / 15%);
+    border: 1px solid rgb(from #A7CBD6 r g b / 30%);
+}
+
+
+
+
+@media screen and (max-width: 800px) {
+    .default-button {
+        font-size: 1.05em;
+    }
+
+    .primary-button {
+        font-size: 1.05em;
+    }
+
+    .red-button {
+        font-size: 1.05em;
+    }
+
+    .link {
+        font-size: 1.05em;
+    }
+}

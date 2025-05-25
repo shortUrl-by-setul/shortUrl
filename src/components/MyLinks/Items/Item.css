@@ -1,0 +1,124 @@
+.button--done .button__text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.button--done::after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+
+.button--error .button__text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.button--error::after {
+    content: "✖ An error occurred";
+    color: crimson;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+
+.link-item-container {
+    font-family: inherit;
+    /* cursor: pointer; */
+    font-size: medium;
+    transition:
+        background-color var(--quick-transition-duration) var(--primary-curve),
+        color var(--quick-transition-duration) var(--primary-curve);
+    min-height: 150px;
+    width: 100%;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    color: var(--text-color);
+}
+
+.link-item-container:hover {
+    background-color: rgb(from var(--secondary-color) r g b / 30%);
+}
+
+.link-item-icon-1 {
+    width: 60px;
+    height: 60px;
+    margin: 1.5em calc(1.5em + 20px);
+    /* filter: invert(0.7); */
+    filter: invert(0.9);
+    transition: filter var(--quick-transition-duration) var(--primary-curve);
+}
+
+[data-theme="light"] .link-item-icon-1 {
+    /* filter: invert(0.3); */
+    filter: invert(0.3);
+}
+
+.link-item-icon-2 {
+    width: 100px;
+    height: 100px;
+    margin: auto 1.5em;
+}
+
+.link-item-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link-item-button {
+    margin: auto 3em auto calc(0.5em + 10px);
+}
+
+@media (max-width: 600px) {
+    .link-item-container {
+        height: 125px;
+    }
+
+    .link-item-text h3 {
+        font-size: 16px;
+    }
+
+    .link-item-text p {
+        font-size: 14px;
+    }
+
+    .link-item-icon-1 {
+        width: 35px;
+        height: 35px;
+        margin: auto calc(0.5em + 10px);
+        filter: invert(1);
+    }
+
+    .link-item-icon-2 {
+        width: 45px;
+        height: 45px;
+        margin: auto calc(0.5em + 5px);
+    }
+
+    #link-item-button {
+        display: none;
+    }
+
+    .link-item-button {
+        margin: auto calc(0.5em + 5px);
+    }
+
+
+
+}
+
+/* .link-item-container:hover #qrcode-item-icon {
+    opacity: 1;
+} */

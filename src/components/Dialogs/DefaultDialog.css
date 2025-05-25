@@ -1,0 +1,125 @@
+.dialog-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    pointer-events: all;
+    -webkit-user-select: none;
+    user-select: none;
+    visibility: hidden;
+}
+
+dialog {
+    transition:
+        transform var(--slow-transition-duration) var(--secondary-curve),
+        box-shadow var(--slow-transition-duration) var(--secondary-curve),
+        background-color var(--slow-transition-duration) var(--primary-curve),
+        border-color var(--slow-transition-duration) var(--primary-curve),
+        opacity calc(var(--slow-transition-duration) - 0s) var(--secondary-curve);
+
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    /* flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    inset: 0;
+    /* max-inline-size: min(90vw, var(--size-content-3));
+    max-block-size: min(80vh, 100%);
+    max-block-size: min(80dvb, 100%); */
+    overflow: hidden;
+    padding: 0em;
+    border-radius: 2em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+dialog[open] {
+    pointer-events: auto;
+    -webkit-user-select: text;
+    user-select: text;
+
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.4);
+
+    z-index: 1;
+}
+
+dialog:not([open]) {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    opacity: 0;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0);
+}
+
+dialog.hide {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    opacity: 0;
+    transform: scale(0.9);
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0);
+    /* display: none; */
+}
+
+#privacyPolicyDialog {
+    max-width: 1200px;
+    max-height: 800px;
+}
+
+.dialog-actions {
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 1300px) {
+    dialog {
+        max-height: 100vh;
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    dialog {
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0px;
+        border: none !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    dialog {
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0px;
+        border: none !important;
+
+    }
+
+    #qr-code-editor-divider-div {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .dialog-actions {
+        margin-top: 1.5em;
+    }
+}

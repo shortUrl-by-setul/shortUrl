@@ -1,0 +1,245 @@
+@font-face {
+  font-family: 'Kaushan Script';
+  src: local('cursive'), url(./assets/Kaushan_Script/KaushanScript-Regular.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype', 'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: local('regular'), url(./assets/Ubuntu_Mono/UbuntuMono-Regular.ttf) format('truetype');
+  /* src: local('bold'), url(./assets/Ubuntu_Mono/UbuntuMono-Bold.ttf) format('truetype'); */
+  /* src: local('bolditalic'), url(./assets/Ubuntu_Mono/UbuntuMono-BoldItalic.ttf) format('truetype'); */
+  /* src: local('italic'), url(./assets/Ubuntu_Mono/UbuntuMono-Italic.ttf) format('truetype'); */
+  /* other formats include: 'woff2', 'truetype, 'opentype', 'embedded-opentype', and 'svg' */
+}
+
+* {
+  box-sizing: border-box;
+  /* Includes padding and border in the width/height */
+}
+
+
+[data-theme='light'] {
+  /* Colors Light */
+  --primary-color: #eeeeee;
+  --primary-color-hover: #d3d3d3;
+  --primary-color-active: #c9c9c9;
+  --secondary-color: #d0d0d0;
+  --tertiary-color: #c9c9c9;
+
+  --accent-color: #80C2D9;
+  --accent-color-hover: #A7CBD6;
+  --accent-color-active: #A7CBD6;
+  --accent-color-high-contrast: #45BCE7;
+
+  --text-color: #5f5f5f;
+  --text-color-disabled: #8a8a8a;
+
+  --background-color: #f5f5f5;
+
+  --primary-generate-button: 255, 90, 120;
+  --secondary-generate-button: 150, 50, 60;
+
+  --logo-color: #45BCE7;
+}
+
+:root {
+  /* Colors Dark */
+  --primary-color: #2E2E2E;
+  --primary-color-hover: #505050;
+  --primary-color-active: #505050;
+  --secondary-color: #505050;
+  --tertiary-color: #5e5e5e;
+
+  --accent-color: #80C2D9;
+  --accent-color-hover: #A7CBD6;
+  --accent-color-active: #A7CBD6;
+  --accent-color-high-contrast: #45BCE7;
+
+  --text-color: #e0e0e0;
+  --text-color-disabled: #999999;
+
+  --background-color: #1e1e1e;
+
+  --primary-generate-button: 255, 90, 120;
+  --secondary-generate-button: 110, 38, 45;
+
+  --logo-color: #45BCE7;
+
+  /* Transitions */
+  --slow-transition-duration: 0.5s;
+  --quick-transition-duration: 0.15s;
+  --primary-curve: ease;
+  --secondary-curve: cubic-bezier(.32, .72, 0, 1);
+  --one-bounce-curve: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --bounce-curve: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  --operator-transition: transform 0.6s var(--secondary-curve);
+  /* --op-transition: all .15s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+  /* --theme-transition: all .15s ease, transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+  /* cubic-bezier(0.68, -0.55, 0.265, 1.55) */
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* line-height: 1.5; */
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-size: cover;
+
+  /* font-synthesis: none; */
+  text-rendering: optimizeLegibility;
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+  transition: background-color var(--quick-transition-duration) var(--primary-curve);
+}
+
+:root:has(body[data-theme='light']) {
+  background-color: #f5f5f5;
+  color: #5f5f5f;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+input,
+textarea,
+button,
+select,
+label,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Slide away a sections and bring it back */
+.slide-away {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform var(--quick-transition-duration) var(--secondary-curve), opacity var(--quick-transition-duration) var(--secondary-curve);
+}
+
+.slide-away-active {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+
+/* Show loading spinner. Must be used with a span w/ class button__text */
+.button__text {
+  transition: color var(--quick-transition-duration) var(--primary-curve);
+}
+
+.button--loading .button__text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.button--loading::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid transparent;
+  border-top-color: var(--text-color);
+  border-radius: 50%;
+  animation: button-loading-spinner 0.5s linear infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Cards */
+.primary-card-blurred {
+  color: var(--text-color);
+  background-color: rgb(from var(--primary-color) r g b / 50%);
+  border: 1px solid var(--secondary-color);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.secondary-card-blurred {
+  color: var(--text-color);
+  background-color: rgb(from var(--secondary-color) r g b / 50%);
+  border: 1px solid var(--tertiary-color);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.primary-card-solid {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+.secondary-card-solid {
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--tertiary-color);
+}
+
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-color-disabled);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}
+
+/* Password check */
+.password-check-red {
+  color: #DA6666;
+}
+
+[data-theme="light"] .password-check-red {
+  color: #ff1919;
+}
+
+.password-check-green {
+  color: #90c758;
+}
+
+[data-theme="light"] .password-check-green {
+  color: #6ba500;
+}

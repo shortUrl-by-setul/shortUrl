@@ -1,0 +1,92 @@
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 2em;
+    border-radius: 2em;
+    gap: 0.5em;
+    background-color: var(--primary-color);
+    transition: background-color var(--slow-transition-duration) var(--primary-curve);
+}
+
+.profile-links-item {
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 1em;
+    width: 100%;
+    /* max-width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-links-item div {
+    width: calc(100% - 8em);
+    /* Ensure the div takes full width */
+}
+
+.profile-links-item .profile-link-item-info h3,
+.profile-links-item .profile-link-item-info p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    /* Ensure it respects the parent container */
+    display: block;
+}
+
+
+
+.profile-links-item:hover {}
+
+.profile-link-item-icon {
+    font-size: x-large;
+    margin: 0 0.5em;
+    width: fit-content;
+    padding: 0;
+}
+
+.profile-link-item-open-icon {
+    width: 1em;
+    height: 1em;
+    margin: 0 1.5em;
+    transition: fill var(--quick-transition-duration) var(--primary-curve);
+    fill: var(--text-color-disabled);
+}
+
+.link-item-open-button:hover .profile-link-item-open-icon {
+    fill: var(--text-color);
+}
+
+.profile-link-item-copy-icon {
+    width: 1.2em;
+    height: 1.2em;
+    margin: -0.1em 0.65em;
+    transition: stroke var(--quick-transition-duration) var(--primary-curve);
+    stroke: var(--text-color-disabled);
+}
+
+.link-item-copy-button:hover .profile-link-item-copy-icon {
+    stroke: var(--text-color);
+}
+
+.link-item-copy-button,
+.link-item-open-button {
+    padding: 0.625em 0;
+}
+
+.button--done .button__text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.button--done::after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}

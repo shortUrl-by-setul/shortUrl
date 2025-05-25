@@ -1,0 +1,38 @@
+<svg width='100%' height='100%' viewBox='0 0 960 540' xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='true' shape-rendering='auto' fill='rgba(0,0,0,0)'
+  project-id="c666860960294c8895918fb614db3ed2" export-id="fc88c701c3fd4716914dfcc987f17e4e" cached="false">
+
+  <defs>
+    <path id='wavepath' d='M 0 2000 0 500 Q 150 400 300 500 t 300 0 300 0 300 0 300 0 300 0  v1000 z' />
+    <path id='motionpath' d='M -600 0 0 0' />
+    <path id='wavepath2' d='M 0 2000 0 500 Q 88 470 176 500 t 176 0 176 0 176 0 176 0 176 0 176 0 176 0  v1000 z' />
+    <path id='motionpath2' d='M -352 0 0 0' />
+    <path id='wavepath3'
+      d='M 0 2000 0 500 Q 52 480 104 500 t 104 0 104 0 104 0 104 0 104 0 104 0 104 0 104 0 104 0 104 0 104 0  v1000 z' />
+    <path id='motionpath3' d='M -208 0 0 0' />
+  </defs>
+
+  <rect width='100%' height='100%' fill='rgba(0,0,0,0)' />
+
+  <g>
+    <use xlink:href='#wavepath' y='-130' fill='rgba(128, 194, 217,0.33)'>
+      <animateMotion dur='5s' repeatCount='indefinite'>
+        <mpath xlink:href='#motionpath' />
+      </animateMotion>
+    </use>
+  </g>
+  <g>
+    <use xlink:href='#wavepath2' y='-150' fill='rgba(128, 194, 217,0.33)'>
+      <animateMotion dur='5s' repeatCount='indefinite'>
+        <mpath xlink:href='#motionpath2' />
+      </animateMotion>
+    </use>
+  </g>
+  <g>
+    <use xlink:href='#wavepath3' y='-170' fill='rgba(128, 194, 217,0.33)'>
+      <animateMotion dur='5s' repeatCount='indefinite'>
+        <mpath xlink:href='#motionpath3' />
+      </animateMotion>
+    </use>
+  </g>
+</svg>

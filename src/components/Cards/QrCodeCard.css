@@ -1,0 +1,175 @@
+.qr-code-container {
+    position: relative;
+    padding-left: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+    color: var(--text-color);
+    padding: 1.5em;
+    background-color: #fff;
+    border-radius: 2em;
+}
+
+.edit-qr-code-button {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: -1em;
+    left: -1em;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform var(--quick-transition-duration) var(--primary-curve);
+    border: none;
+}
+
+.edit-qr-code-button img {
+    width: 24px;
+    height: 24px;
+    /* -webkit-user-select: none;
+    user-select: none; */
+}
+
+.edit-qr-code-button:hover {
+    transform: scale(1.1);
+}
+
+.edit-qr-code-button:active {
+    transform: scale(0.9);
+}
+
+.qr-input-file-deselect-button {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
+.qr-input-file-deselect-button img {
+    width: 12px;
+    height: 12px;
+}
+
+.qr-input-file-deselect-button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.qr-input-file-deselect-button:hover {
+    transform: scale(1.1);
+}
+
+.qr-input-file-deselect-button:active {
+    transform: scale(0.9);
+}
+
+#qr-image-input:file-selector-button {
+    content: 'Choose Image';
+}
+
+
+
+
+
+
+#download-qr-code-icon {
+    width: 22px;
+    height: 22px;
+    filter: invert(1);
+    opacity: 0.5;
+    transition: filter var(--slow-transition-duration) var(--primary-curve), opacity var(--quick-transition-duration) var(--primary-curve);
+}
+
+[data-theme="light"] #download-qr-code-icon {
+    filter: invert(0);
+    opacity: 0.4;
+}
+
+#download-qr-code-button:hover {
+    background-color: #3d3d3d;
+}
+
+#download-qr-code-button:active {
+    background-color: #464646;
+}
+
+[data-theme="light"] #download-qr-code-button:hover {
+    background-color: #e2e2e2;
+}
+
+[data-theme="light"] #download-qr-code-button:active {
+    background-color: #d6d6d6;
+}
+
+#download-qr-code-button:hover #download-qr-code-icon {
+    opacity: 0.9;
+}
+
+[data-theme="light"] #download-qr-code-button:hover #download-qr-code-icon {
+    opacity: 0.6;
+}
+
+#download-qr-code-button:active #download-qr-code-icon {
+    opacity: 0.9;
+}
+
+[data-theme="light"] #download-qr-code-button:active #download-qr-code-icon {
+    opacity: 0.6;
+}
+
+
+#download-qr-code-button:disabled {
+    opacity: 0.35;
+    color: var(--text-color-disabled);
+    cursor: not-allowed;
+}
+
+#download-qr-code-button:disabled #download-qr-code-icon {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+#download-qr-code-button:hover:disabled #download-qr-code-icon {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+[data-theme="light"] #download-qr-code-button:disabled #download-qr-code-icon {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+[data-theme="light"] #download-qr-code-button:hover:disabled #download-qr-code-icon {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.card-contents.qr-code {
+    gap: 4em;
+}
+
+@media screen and (max-width: 700px) {
+    .card-contents.qr-code {
+        gap: 2em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card-contents.qr-code {
+        flex-direction: column;
+        align-items: center;
+        gap: 4em;
+    }
+
+    .qr-code-container {
+        width: calc(256px + 3em);
+    }
+}

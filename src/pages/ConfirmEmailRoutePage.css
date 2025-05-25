@@ -1,0 +1,66 @@
+#root {
+    width: 100%;
+    /* height: 100vh; */
+    /* Add this line */
+
+    /* padding: 2rem; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0 1em 7% 1em;
+    gap: 2em;
+}
+
+footer {
+    color: var(--text-color);
+    padding-bottom: 1em;
+}
+
+
+
+h1 {
+    /* font-family: 'Kaushan Script', cursive; */
+    font-size: 2em;
+    transition: color var(--slow-transition-duration) var(--primary-curve);
+    /* margin-top: 1em; */
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.75em;
+    }
+
+}
+
+.header-wrapper {
+    padding: 2em;
+}
+
+.change-email-form {
+    /* margin: 0rem 1rem; */
+    margin-right: 0.3rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* alignItems: center; */
+    flex: 1 1 auto;
+}
+
+#change-email-error-text {
+    /* textAlign: 'center', color: '#DA6666', maxHeight: '3em', overflow: 'hidden', transition: 'max-height var(--slow-transition-duration) var(--primary-curve)' */
+    color: #DA6666;
+    /* max-height: 0em; */
+    overflow: hidden;
+    /* transition: max-height var(--slow-transition-duration) var(--primary-curve); */
+    text-align: center;
+}

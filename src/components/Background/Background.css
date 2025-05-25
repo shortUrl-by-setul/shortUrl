@@ -1,0 +1,81 @@
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -1;
+}
+
+/* #background-sun-inner,
+#background-sun-outer {
+    transition: transform var(--slow-transition-duration) var(--bounce-curve), opacity var(--slow-transition-duration) var(--primary-curve);
+    transform: translate(-25%, 0px);
+    opacity: 0;
+}
+
+[data-theme='light'] #background-sun-inner,
+[data-theme='light'] #background-sun-outer {
+    transform: translate(0%, 0px);
+    opacity: 1;
+}
+
+#background-moon-inner,
+#background-moon-outer {
+    transition: transform var(--slow-transition-duration) var(--bounce-curve), opacity var(--slow-transition-duration) var(--primary-curve);
+    transform: translate(86%, 0px);
+    opacity: 1;
+}
+
+[data-theme='light'] #background-moon-inner,
+[data-theme='light'] #background-moon-outer {
+    transform: translate(125%, 0px);
+    opacity: 0;
+} */
+
+/* keyframe animation to make sun and moon do a parabolic arc when swtiching between light and dark */
+@keyframes parabolicArc {
+    0% {
+        transform: translate(0%, 0px);
+    }
+
+    12.5% {
+        transform: translate(12.5%, calc(150px / 2 * 0.109375));
+        /* 0.109375 */
+    }
+
+    25% {
+        transform: translate(25%, calc(150px / 2 * 0.1875));
+        /* 0.1875 */
+    }
+
+    37.5% {
+        transform: translate(37.5%, calc(150px / 2 * 0.234375));
+        /* 0.234375 */
+    }
+
+    50% {
+        transform: translate(50%, calc(150px / 2 * 0.25));
+        /* 0.25 */
+    }
+
+    62.5% {
+        transform: translate(62.5%, calc(150px / 2 * 0.234375));
+        /* 0.234375 */
+    }
+
+    75% {
+        transform: translate(75%, calc(150px / 2 * 0.1875));
+        /* 0.1875 */
+    }
+
+    87.5% {
+        transform: translate(87.5%, calc(150px / 2 * 0.109375));
+        /* 0.109375 */
+    }
+
+    100% {
+        transform: translate(100%, 0px);
+        /* 0 */
+    }
+}

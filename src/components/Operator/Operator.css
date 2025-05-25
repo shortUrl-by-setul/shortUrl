@@ -1,0 +1,217 @@
+.card {
+    /* background-color: var(--primary-color); */
+    border-radius: 2em;
+    padding: 3em 3em 3.5em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    /* position: absolute; */
+    transition:
+        background-color var(--slow-transition-duration) var(--primary-curve),
+        border-color var(--slow-transition-duration) var(--primary-curve),
+        color var(--slow-transition-duration) var(--primary-curve),
+        transform var(--quick-transition-duration) var(--secondary-curve);
+    /* box-shadow: 0px 4px 15px 0px rgba(255, 255, 255, 0.1); */
+    /* box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1); */
+}
+
+/* 
+@media screen and (max-width: 2000px) {
+    .card {
+        width: 65%;
+    }
+} */
+@media screen and (max-width: 2000px) {
+    .card {
+        width: 875px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .card {
+        width: 70%;
+        padding: 2em 2em 2.5em 2em;
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card {
+        width: 100%;
+        font-size: smaller;
+    }
+}
+
+
+.card-container {
+    /* gap: 1em; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* transition: var(--transition); */
+    color: var(--text-color);
+    overflow: hidden;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.card-contents {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    /* transition: var(--transition); */
+    width: 100%;
+    /* align-items: center; */
+}
+
+.custom-slide-away {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: transform var(--quick-transition-duration) var(--secondary-curve), opacity var(--quick-transition-duration) var(--secondary-curve);
+
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.custom-slide-away-active {
+    opacity: 1;
+    transform: scale(1);
+
+    pointer-events: auto;
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.op-slide-away-left {
+    transform: translate(-200%, 0%);
+
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.op-slide-away-right {
+    transform: translate(200%, 0%);
+
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.op-slide-away-active {
+    opacity: 1;
+    transform: translate(0%, 0%);
+
+    pointer-events: auto;
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.operation-selector input {
+    display: none;
+}
+
+.operation-selector {
+    --container_width: 325px;
+    width: var(--container_width);
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2em;
+    /* background-color: rgb(from var(--primary-color) r g b / 50%); */
+    /* border: 1px solid var(--secondary-color); */
+    /* -webkit-backdrop-filter: blur(10px); */
+    /* backdrop-filter: blur(10px); */
+    color: var(--text-color-disabled);
+    overflow: hidden;
+    transition:
+        background-color var(--slow-transition-duration) var(--primary-curve),
+        border-color var(--slow-transition-duration) var(--primary-curve);
+    /* box-shadow: 0px 4px 15px 0px rgba(255, 255, 255, 0.1); */
+    /* border: 1px solid rgba(53, 52, 52, 0.226); */
+    /* box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1); */
+}
+
+@media screen and (max-width: 480px) {
+    .operation-selector {
+        margin-top: 3em;
+    }
+}
+
+
+.operation-selector label {
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+    z-index: 1;
+    font-weight: 600;
+    font-size: small;
+    transition: color var(--quick-transition-duration) var(--primary-curve);
+}
+
+.operation-selector label:hover {
+    color: var(--text-color);
+}
+
+.selection {
+    --size_reduction: 0.5em;
+    display: block;
+    position: absolute;
+    height: calc(100% - var(--size_reduction));
+    width: calc(100% / 2 - var(--size_reduction) - 1.5px);
+    z-index: 0;
+    left: calc(var(--size_reduction) / 2);
+    top: calc(var(--size_reduction) / 2);
+    transition:
+        background-color var(--slow-transition-duration) var(--primary-curve),
+        var(--operator-transition);
+    border-radius: 2em;
+}
+
+.operation-selector label:has(input:checked) {
+    color: var(--text-color);
+}
+
+.operation-selector label:has(input:checked)~.selection {
+    background-color: rgb(from var(--secondary-color) r g b / 50%);
+    display: inline-block;
+}
+
+.operation-selector label:nth-child(1):has(input:checked)~.selection {
+    transform: translateX(0);
+}
+
+.operation-selector label:nth-child(2):has(input:checked)~.selection {
+    transform: translateX(calc(var(--container_width) / 2));
+}
