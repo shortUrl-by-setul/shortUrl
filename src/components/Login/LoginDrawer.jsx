@@ -956,7 +956,7 @@ export default function LoginDrawer({ onDoneLoading }) {
                 }}><form id='login-change-email-form' className='login-form' onSubmit={submitChangeEmail}>
                         <div id='email-sent' className='slide-away' style={{ position: 'absolute', width: 'calc(100% - 4em)', top: '31%', gap: '1em', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
                             <p>Done ✅</p>
-                            <p>A link to confirm your email change was sent to the email address currently registered to this account as well as the new email address. You must click the confirmation link on both emails to complete the process.</p>
+                            <p>A link to confirm your email change was sent to the email address currently registered to this account as well as the new email address (it may be in your spam folder). You must click the confirmation link on both emails to complete the process.</p>
                         </div>
                         <div id='email-not-sent' className='slide-away slide-away-active'>
                             <label htmlFor='login-change-email-cur-email-input'>For security purposes, please confirm your current email.</label>
@@ -1078,7 +1078,7 @@ export default function LoginDrawer({ onDoneLoading }) {
                 }}><form id='login-change-password-form' className='login-form' onSubmit={submitChangePassword}>
                         <div id='email-sent' className='slide-away' style={{ position: 'absolute', width: 'calc(100% - 4em)', top: '32.5%', gap: '1em', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
                             <p>Done ✅</p>
-                            <p>An email containing a link to reset your password has been sent to you. Follow the link in the email to complete the process.</p>
+                            <p>An email containing a link to reset your password has been sent to you (it may be in your spam folder). Follow the link in the email to complete the process.</p>
                         </div>
                         <div id='email-not-sent' className='slide-away slide-away-active'>
                             <p>Please confirm your current email.</p>
