@@ -25,13 +25,14 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     transition: transform var(--quick-transition-duration) var(--primary-curve);
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
-.edit-qr-code-button img {
-    width: 24px;
-    height: 24px;
-    /* -webkit-user-select: none;
-    user-select: none; */
+.edit-qr-code-button svg {
+    width: 32px;
+    height: 32px;
 }
 
 .edit-qr-code-button:hover {
@@ -48,11 +49,12 @@
     align-items: center;
     cursor: pointer;
     border: none;
+    padding: 2px 0 0 0;
 }
 
-.qr-input-file-deselect-button img {
-    width: 12px;
-    height: 12px;
+.qr-input-file-deselect-button svg {
+    width: 20px;
+    height: 20px;
 }
 
 .qr-input-file-deselect-button:disabled {
@@ -83,14 +85,8 @@
 #download-qr-code-icon {
     width: 22px;
     height: 22px;
-    filter: invert(1);
-    opacity: 0.5;
-    transition: filter var(--slow-transition-duration) var(--primary-curve), opacity var(--quick-transition-duration) var(--primary-curve);
-}
-
-[data-theme="light"] #download-qr-code-icon {
-    filter: invert(0);
-    opacity: 0.4;
+    stroke: var(--text-color-disabled);
+    transition: stroke var(--quick-transition-duration) var(--primary-curve);
 }
 
 #download-qr-code-button:hover {
@@ -110,47 +106,29 @@
 }
 
 #download-qr-code-button:hover #download-qr-code-icon {
-    opacity: 0.9;
-}
-
-[data-theme="light"] #download-qr-code-button:hover #download-qr-code-icon {
-    opacity: 0.6;
+    stroke: var(--text-color);
 }
 
 #download-qr-code-button:active #download-qr-code-icon {
-    opacity: 0.9;
+    stroke: var(--text-color);
 }
-
-[data-theme="light"] #download-qr-code-button:active #download-qr-code-icon {
-    opacity: 0.6;
-}
-
 
 #download-qr-code-button:disabled {
-    opacity: 0.35;
+    opacity: 0.5;
     color: var(--text-color-disabled);
     cursor: not-allowed;
 }
 
 #download-qr-code-button:disabled #download-qr-code-icon {
-    opacity: .35;
+    stroke: var(--text-color-disabled);
     cursor: not-allowed;
 }
 
 #download-qr-code-button:hover:disabled #download-qr-code-icon {
-    opacity: .35;
+    stroke: var(--text-color-disabled);
     cursor: not-allowed;
 }
 
-[data-theme="light"] #download-qr-code-button:disabled #download-qr-code-icon {
-    opacity: .35;
-    cursor: not-allowed;
-}
-
-[data-theme="light"] #download-qr-code-button:hover:disabled #download-qr-code-icon {
-    opacity: .35;
-    cursor: not-allowed;
-}
 
 .card-contents.qr-code {
     gap: 4em;

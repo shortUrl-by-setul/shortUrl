@@ -64,7 +64,7 @@ export default function QrCodeMyLinksItemComponent({ item }) {
             // containerRef.current.style.borderColor = 'transparent';
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) return;
-            const { data: { qrcodes } } = await supabase.from('profiles').select('qrcodes').eq('id', user.id).single();
+            const { data: { qrcodes } } = await supabase.from('profiles').select('qrcodes').eq('id', user.id).limit(1).single();
             const { error: error } = await supabase.from('profiles').update({ qrcodes: qrcodes.filter(qrCode => qrCode.id !== item.id) }).eq('id', user.id);
             if (error) {
                 containerRef.current.classList.toggle('button--loading');

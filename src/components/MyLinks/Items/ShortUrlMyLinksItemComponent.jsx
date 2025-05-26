@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 
-import LinkIcon from '../../../assets/link.png';
 import { supabase } from '../../../helper/supabase.jsx';
 import { ShortUrlMyLinksItem } from '../../../helper/vars.jsx';
 import AreYouSureDialog from '../../Dialogs/AreYouSureDialog.jsx';
@@ -47,12 +46,9 @@ export default function ShortUrlMyLinksItemComponent({ item, userRole }) {
         if (confirmed) {
             if (!containerRef.current) return;
             containerRef.current.classList.toggle('button--loading');
-            // containerRef.current.style.backgroundColor = 'rgb(from red r g b / 5%)';
-            // containerRef.current.style.borderColor = 'transparent';
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) return;
-            // const { data: { links } } = await supabase.from('links').select('*').eq('author', user.id);
-            const { error: error } = await supabase.from('links').delete().eq('id', item.id);
+            const { error } = await supabase.from('links').delete().eq('id', item.id);
             if (error) {
                 containerRef.current.classList.toggle('button--loading');
                 containerRef.current.classList.toggle('button--error');
@@ -70,7 +66,10 @@ export default function ShortUrlMyLinksItemComponent({ item, userRole }) {
                 <span className='button__text' style={{ width: '100%', height: '100%' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: '100%' }}>
                         <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-                            <img src={LinkIcon} alt='Link icon' className='link-item-icon-1' />
+                            {/* https://www.svgrepo.com/svg/502739/link-1 */}
+                            <svg alt='Link icon' className='link-item-icon-1' width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M10 8H6C4.34315 8 3 9.34315 3 11V13C3 14.6569 4.34315 16 6 16H10M9 12H15M14 8H18C19.6569 8 21 9.34315 21 11V13C21 14.6569 19.6569 16 18 16H14" />
+                            </svg>
                         </div>
                         <div className='link-item-text' style={{ flexGrow: 1, overflow: 'hidden' }}>
                             <h3 style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.id}</h3>

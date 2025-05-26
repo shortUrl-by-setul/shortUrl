@@ -40,7 +40,7 @@ export default function RegisterRoutePage({ theme, toggleTheme }) {
                     setIsTokenValid(session?.user ? true : false);
                     setUser(session?.user ?? null);
                     if (session?.user) {
-                        const { data } = await supabase.from('profiles').select('has_registered').eq('id', session?.user?.id).single();
+                        const { data } = await supabase.from('profiles').select('has_registered').eq('id', session?.user?.id).limit(1).single();
                         setHasRegistered(data?.has_registered ?? false)
                         data?.has_registered ? document.title = 'Access Denied | shortUrl by setul' : document.title = 'Register | shortUrl by setul';
                     } else {

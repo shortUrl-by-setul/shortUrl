@@ -1,9 +1,6 @@
 import './QrCodeCard.css';
 
 import { QR_CODE, DEFAULT_QR_CODE_SETTINGS, DEFAULT_QR_CODE_VALUE } from '../../helper/vars.jsx'
-import EditIcon from '../../assets/edit.png';
-import CloseIcon from '../../assets/close.png';
-import DownloadIcon from '../../assets/download.png';
 import QRCodeEditorDialog from '../Dialogs/QRCodeEditorDialog.jsx'
 
 import { QRCode } from 'react-qrcode-logo';
@@ -185,7 +182,7 @@ export default function QrCodeCard() {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
             // Get current user qrcodes from users table -> id == uid -> qrcodes jsonb array
-            const { data: { qrcodes } } = await supabase.from('profiles').select('qrcodes').eq('id', user.id).single();
+            const { data: { qrcodes } } = await supabase.from('profiles').select('qrcodes').eq('id', user.id).limit(1).single();
             if (qrcodes === null) {
                 // Create new qrcodes array
                 await supabase.from('profiles').update({ qrcodes: [{ id: Math.random() * 1000000000 + new Date().getTime(), created_at: new Date().toISOString(), value: qrCodeValue, settings: qrCodeSettings },] }).eq('id', user.id);
@@ -252,7 +249,11 @@ export default function QrCodeCard() {
                     <div style={{ display: 'flex', flexDirection: 'column', height: 'fit-content', alignItems: 'center' }}>
                         <div className='qr-code-container' style={{ marginBottom: '1em', backgroundColor: qrCodeSettings.bgColor }}>
                             <button type='button' className='edit-qr-code-button' onClick={() => setIsDialogOpen(true)} title='Open QR Code Editor'>
-                                <img src={EditIcon} />
+                                {/* https://www.svgrepo.com/svg/503019/edit */}
+                                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" clipRule="evenodd" fill="#000000"
+                                        d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" />
+                                </svg>
                             </button>
                             <QRCode ref={qrCodeRef} value={qrCodeValue} style={{ width: '256px', height: '256px' }}
                                 bgColor={qrCodeSettings.bgColor}
@@ -274,7 +275,12 @@ export default function QrCodeCard() {
                         </div>
                         <button type='button' id="download-qr-code-button" className='default-button' disabled={qrCodeValue === ''} title='Download QR Code' onClick={(e) => uploadQrCode(e)} style={{ borderRadius: '1em', padding: '0.5em 1.25em', position: 'relative', width: 'fit-content', }}>
                             <span className="button__text" style={{ fontSize: '1.35em', paddingBottom: '0.1em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5em', }}>
-                                <img src={DownloadIcon} alt="Download QR Code" id="download-qr-code-icon" />
+                                {/* https://www.svgrepo.com/svg/510957/download */}
+                                <svg alt="Download QR Code" id="download-qr-code-icon" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="Interface / Download">
+                                        <path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </g>
+                                </svg>
                                 Save
                             </span>
                         </button>
@@ -424,7 +430,11 @@ export default function QrCodeCard() {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1em' }}>
                         <input type='file' id='qr-file-input' name='qr-code-input-1' accept='application/*' onChange={(e) => { if (e.target.value.length > 0) setChosenFile(e.target.files[0]); }} value={chosenFile} />
                         <button type='button' className='qr-input-file-deselect-button' disabled={!chosenFile} onClick={() => { document.querySelector('#qr-file-input').value = ''; setChosenFile(''); }}>
-                            <img src={CloseIcon} />
+                            {/* https://www.svgrepo.com/svg/500512/close-bold */}
+                            <svg width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#F44336"
+                                    d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z" />
+                            </svg>
                         </button>
                     </div>
                 </div>;
@@ -436,7 +446,11 @@ export default function QrCodeCard() {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1em' }}>
                         <input type='file' id='qr-image-input' name='qr-code-input-1' accept='.png, .jpg, .jpeg, .gif, .webp, .svg' onChange={(e) => { if (e.target.value.length > 0) setChosenFile(e.target.files[0]); }} value={chosenFile} />
                         <button type='button' className='qr-input-file-deselect-button' disabled={!chosenFile} onClick={() => { document.querySelector('#qr-image-input').value = ''; setChosenFile(''); }}>
-                            <img src={CloseIcon} />
+                            {/* https://www.svgrepo.com/svg/500512/close-bold */}
+                            <svg width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#F44336"
+                                    d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z" />
+                            </svg>
                         </button>
                     </div>
                 </div>;

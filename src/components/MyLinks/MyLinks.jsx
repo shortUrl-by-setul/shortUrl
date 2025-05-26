@@ -54,13 +54,13 @@ export default function MyLinks({ onDoneLoading }) {
         (async () => {
             const [{ data: links }, { data: { qrcodes } }] = await Promise.all([
                 supabase.from('links').select('*').eq('author', user.id),
-                supabase.from('profiles').select('qrcodes').eq('id', user.id).single()
+                supabase.from('profiles').select('qrcodes').eq('id', user.id).limit(1).single()
             ]);
             if (links) links.forEach(link => link.type = SHORTEN_URL);
             if (qrcodes) qrcodes.forEach(qrCode => qrCode.type = QR_CODE);
             const allLinks = [...(links || []), ...(qrcodes || [])].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
             // Update user role
-            const { data: roleData, error: roleError } = await supabase.from('user_roles').select('role').eq('id', user?.id).single();
+            const { data: roleData, error: roleError } = await supabase.from('user_roles').select('role').eq('id', user?.id).limit(1).single();
             if (!roleError && roleData) {
                 setUserRole(roleData.role);
             }

@@ -40,12 +40,12 @@ export default function LoginDrawer({ onDoneLoading }) {
                 setButtonIcon(session?.user ? '✅' : '🗝️');
                 setCurUser(session?.user);
                 if (session?.user) {
-                    const { data, error } = await supabase.from('profiles').select('handle, public').eq('id', session?.user?.id).single();
+                    const { data, error } = await supabase.from('profiles').select('handle, public').eq('id', session?.user?.id).limit(1).single();
                     if (!error && data) {
                         setUserHandle(data.handle);
                         setUserIsPublic(data.public);
                     }
-                    const { data: roleData, error: roleError } = await supabase.from('user_roles').select('role').eq('id', session?.user?.id).single();
+                    const { data: roleData, error: roleError } = await supabase.from('user_roles').select('role').eq('id', session?.user?.id).limit(1).single();
                     if (!roleError && roleData) {
                         setUserRole(roleData.role);
                     }
@@ -1491,7 +1491,7 @@ export default function LoginDrawer({ onDoneLoading }) {
                 detailsArea.querySelector('.button__text')?.parentElement.classList.add('button--loading');
                 setTimeout(async () => {
                     // Get selected user and their role
-                    const { data, error } = await supabase.from('profiles').select('role').eq('email', e.target.textContent).single();
+                    const { data, error } = await supabase.from('profiles').select('role').eq('email', e.target.textContent).limit(1).single();
                     e.target.parentElement.parentElement.classList.remove('disabled');
                     detailsArea.querySelector('.button__text')?.parentElement.classList.remove('button--loading');
                     if (error) {
