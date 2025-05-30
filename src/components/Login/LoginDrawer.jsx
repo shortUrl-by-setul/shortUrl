@@ -1248,7 +1248,7 @@ export default function LoginDrawer({ onDoneLoading }) {
                         />
                         {deleteDataErrorMessage}
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em' }}>
-                            <button type="button" id='login-delete-data-cancel-button' form='login-delete-data-form' className='default-button' value="cancel" title='Go back' onClick={() => { switchPage(pages.user); }}>No</button>
+                            <button type="button" id='login-delete-data-cancel-button' form='login-delete-data-form' className='default-button' value="cancel" title='Go back' onClick={() => { switchPage(pages.user); }}>Back</button>
                             <button type="submit" id='login-delete-data-submit-button' form='login-delete-data-form' className='default-button primary-button' value="continue" title='Delete my data' style={{ position: 'relative' }}>
                                 <span className='button__text'>Delete</span>
                             </button>
@@ -1356,7 +1356,7 @@ export default function LoginDrawer({ onDoneLoading }) {
                         />
                         {deleteAccountErrorMessage}
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em' }}>
-                            <button type="button" id='login-delete-account-cancel-button' form='login-delete-account-form' className='default-button' value="cancel" title='Go back' onClick={() => { switchPage(pages.user); }}>No</button>
+                            <button type="button" id='login-delete-account-cancel-button' form='login-delete-account-form' className='default-button' value="cancel" title='Go back' onClick={() => { switchPage(pages.user); }}>Back</button>
                             <button type="submit" id='login-delete-account-submit-button' form='login-delete-account-form' className='default-button primary-button' value="delete-acc" title='Delete my account' style={{ position: 'relative' }}>
                                 <span className='button__text'>Delete</span>
                             </button>
