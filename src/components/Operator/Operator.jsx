@@ -1,5 +1,5 @@
 import './Operator.css';
-import { SHORTEN_URL, QR_CODE } from '../../helper/vars.jsx'
+import { SHORTEN_URL, QR_CODE } from '../../helper/vars.js'
 import ShortenUrlCard from '../Cards/ShortenUrlCard.jsx';
 import QrCodeCard from '../Cards/QrCodeCard.jsx';
 import { useState, useEffect } from 'react';

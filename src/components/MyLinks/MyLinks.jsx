@@ -3,8 +3,8 @@
 import './MyLinks.css';
 
 import { Drawer } from 'vaul';
-import { QR_CODE, SHORTEN_URL } from '../../helper/vars.jsx';
-import { supabase } from '../../helper/supabase.jsx';
+import { QR_CODE, SHORTEN_URL } from '../../helper/vars.js';
+import { supabase } from '../../helper/supabase.js';
 import ShortUrlMyLinksItemComponent from './Items/ShortUrlMyLinksItemComponent.jsx';
 import QrCodeMyLinksItemComponent from './Items/QrCodeMyLinksItemComponent.jsx';
 import LoginIllustrationImage from '../../assets/login_illustration.svg';

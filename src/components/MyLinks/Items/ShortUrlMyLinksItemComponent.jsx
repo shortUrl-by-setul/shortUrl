@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 
-import { supabase } from '../../../helper/supabase.jsx';
-import { ShortUrlMyLinksItem } from '../../../helper/vars.jsx';
+import { supabase } from '../../../helper/supabase.js';
+import { ShortUrlMyLinksItem } from '../../../helper/vars.js';
 import AreYouSureDialog from '../../Dialogs/AreYouSureDialog.jsx';
 
 import './Item.css';

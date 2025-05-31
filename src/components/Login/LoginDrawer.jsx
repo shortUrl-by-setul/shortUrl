@@ -3,7 +3,7 @@
 import './LoginDrawer.css';
 import { useState, useEffect, useRef } from 'react';
 import { Drawer } from 'vaul';
-import { supabase } from '../../helper/supabase.jsx';
+import { supabase } from '../../helper/supabase.js';
 import InfoTooltip from '../HoverTooltip/HoverTooltip.jsx';
 
 export default function LoginDrawer({ onDoneLoading }) {

@@ -1,7 +1,7 @@
 import './ShortenUrlCard.css';
 
-import { SHORTEN_URL } from '../../helper/vars.jsx';
-import { supabase } from '../../helper/supabase.jsx';
+import { SHORTEN_URL } from '../../helper/vars.js';
+import { supabase } from '../../helper/supabase.js';
 import Loading from '../Background/Loading.jsx';
 import { useEffect, useState } from 'react';
 import InfoTooltip from '../HoverTooltip/HoverTooltip.jsx';

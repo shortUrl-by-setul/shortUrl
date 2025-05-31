@@ -3,7 +3,7 @@ import './DefaultDialog.css';
 import './QRCodeEditorDialog.css';
 
 import { PopoverPicker } from "./PopoverPicker";
-import { DEFAULT_QR_CODE_SETTINGS } from "../../helper/vars.jsx";
+import { DEFAULT_QR_CODE_SETTINGS } from "../../helper/vars.js";
 
 import { useState, useRef, useEffect } from 'react';
 import { QRCode } from 'react-qrcode-logo';

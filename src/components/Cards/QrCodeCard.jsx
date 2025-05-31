@@ -1,11 +1,11 @@
 import './QrCodeCard.css';
 
-import { QR_CODE, DEFAULT_QR_CODE_SETTINGS, DEFAULT_QR_CODE_VALUE } from '../../helper/vars.jsx'
+import { QR_CODE, DEFAULT_QR_CODE_SETTINGS, DEFAULT_QR_CODE_VALUE } from '../../helper/vars.js'
 import QRCodeEditorDialog from '../Dialogs/QRCodeEditorDialog.jsx'
 
 import { QRCode } from 'react-qrcode-logo';
 import { useState, useRef, useEffect } from 'react';
-import { supabase } from '../../helper/supabase.jsx';
+import { supabase } from '../../helper/supabase.js';
 
 
 export default function QrCodeCard() {

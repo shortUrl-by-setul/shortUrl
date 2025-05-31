@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 
-import { QrCodeMyLinksItem } from '../../../helper/vars.jsx';
-import { supabase } from '../../../helper/supabase.jsx';
+import { QrCodeMyLinksItem } from '../../../helper/vars.js';
+import { supabase } from '../../../helper/supabase.js';
 import { QRCode } from 'react-qrcode-logo';
 
 import './Item.css';

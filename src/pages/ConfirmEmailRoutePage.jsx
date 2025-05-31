@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '../helper/supabase.jsx';
+import { supabase } from '../helper/supabase.js';
 import Header from '../components/Header/Header.jsx';
 import PrivacyPolicyDialog from '../components/Dialogs/PrivacyPolicyDialog.jsx';
 import Loading from '../components/Background/Loading.jsx';

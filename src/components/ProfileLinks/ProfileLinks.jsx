@@ -1,6 +1,6 @@
 'use client';
 
-import { supabase } from '../../helper/supabase.jsx';
+import { supabase } from '../../helper/supabase.js';
 import './ProfileLinks.css';
 import { useEffect } from 'react';
 
