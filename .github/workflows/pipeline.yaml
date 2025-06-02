@@ -14,12 +14,8 @@ jobs:
         run: npm ci
       - name: Deploy with gh-pages
         run: |
-          git config --global user.email "support+actions@github.com"
-          git config --global user.name "github-actions-bot"
-          git remote set-url origin https://svparekh:${DEPLOY_TOKEN}@github.com/shortUrl-by-setul/shortUrl.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
