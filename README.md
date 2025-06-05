@@ -102,11 +102,11 @@ Define **public** schema with the following tables:
     - id: text
     - created_at: timestampz
     - expires_at: timestampz
-    - author: uuid (foreign key w/ CASCADE to `public.profiles`)
+    - author: uuid (foreign key w/ CASCADE to `public.profiles.id`)
     - long_url: text
     - times_visited: int4
 - `profiles` (user data).
-    - id: uuid (foreign key w/ CASCADE to `auth.users.is`)
+    - id: uuid (foreign key w/ CASCADE to `auth.users.id`)
     - email: text
     - public: boolean
     - qrcodes: jsonb
@@ -119,11 +119,7 @@ Even though inserting new rows already had client and server-side validation, co
 
 ### Step 4: Setting up Realtime Data
 
-- Enable **Supabase Realtime** to sync user interactions instantly.
-- Add realtime listeners to the app
-    - New links/codes added
-    - Links/codes deleted
-    - User profile changes
+- **Enable Realtime** to sync user interactions instantly via a listener.
 
 ### Step 5: Setting up Table Policies (RLS)
 
@@ -131,7 +127,7 @@ Even though inserting new rows already had client and server-side validation, co
 - Define **access policies** for each table (e.g., only owners can delete their links).
 - The `profiles` table requires the most extensive policy. It needs a **SELECT** policy that allows anyone to view public profiles, users can view their own profiles, and admin roles can view anyone's profile. It also needs an **UPDATE** policy that allows the user to update their own data, but they cannot change their profile to public unless their role is of “vip” or "admin”. It must also allow admins to update anyone's data. This means both policies are applied to the `authenticated` schema.
     
-    ```sql
+    ```pgsql
     alter policy "User can update some of their own data and admins can update an"
     on "public"."profiles"
     to authenticated
@@ -172,13 +168,13 @@ Even though inserting new rows already had client and server-side validation, co
     
 - The `deleted_links` table requires a policy for both **INSERT** and **SELECT** that allows authenticated users to only view and add their own data (when they delete a link, auto add via `before_delete_link` trigger and `log_deleted_link` function). This means both policies are applied to the `authenticated` schema.
     
-    ```sql
+    ```pgsql
     author = ( SELECT auth.uid() AS uid )
     ```
     
 - The `links` table requires a policy for **SELECT** and **DELETE** that allows anyone to view, but only authenticated users can delete their own links. The **SELECT** policy is applied to the `public` schema, while the **DELETE** policy is applied to the `authenticated` schema.
     
-    ```sql
+    ```pgsql
     # SELECT
     true
     # DELETE
@@ -187,7 +183,7 @@ Even though inserting new rows already had client and server-side validation, co
     
 - The `user_roles` table requires a policy for both **SELECT** and **UPDATE** that allows admins to update anyone’s role and allows users to view their own role. This means both policies are applied to the `authenticated` schema.
     
-    ```sql
+    ```pgsql
     # SELECT
     id = ( SELECT auth.uid() AS uid )
     # UPDATE
@@ -226,7 +222,7 @@ The `update_email_columns_on_user_email_update` updates the column called “ema
 
 The `update_profile_on_role_change` will update the “public” column if applicable and will update the role displayed in the user’s data. This role column is used by admins purely to see user roles.
 
-### Step 7: Setting up Triggers
+### Step 7: Setting up Database Triggers
 
 Now that we have our database function, lets setup the triggers so that they can effectively work together. The following triggers need to be set up: three in the public schema and two in the auth schema. They will run the functions previously defined to ensure automatic, consistent, and secure updates across our database.
 
@@ -261,7 +257,10 @@ Now that we have our database function, lets setup the triggers so that they can
 ### Step 11: Making Frontend Listen to Auth & Realtime Data
 
 - Connect **React state** with Supabase Auth to track login status.
-- Use **realtime subscriptions** to dynamically update saved links.
+- Use **realtime subscriptions** to dynamically update the app.
+    - New links/codes added
+    - Links/codes deleted
+    - User profile changes
 
 ### Step 12: Setup the Redirection Site
 
@@ -275,6 +274,7 @@ Now that we have our database function, lets setup the triggers so that they can
 
 - **Test the application** across multiple browsers for compatibility.
 - Deploy to **GitHub Pages** with a custom domain for easy sharing.
+- Ensure domain DNS config and custom email addresses are working.
 
 ## What's Next? 🌟🔜
 
